@@ -1,0 +1,30 @@
+from flask import Flask
+import random
+
+app = Flask(__name__)
+app.config['DEBUG'] = True
+
+
+@app.route('/')
+@app.route('/hello')
+def hello():
+    page = f"""
+        <h1>Here's a random number: {random.randint(1,25)}</h1>
+        <form>
+            <button>New Number</button>
+        </form>
+    """
+    return page
+
+
+@app.route('/goodbye')
+def goodbye():
+    return "<h2>This is the second page!</h2>"
+
+
+@app.route('/third_page')
+def third_page():
+    return "<h3>This is the third page!</h3>"
+
+if __name__ == '__main__':
+    app.run()
